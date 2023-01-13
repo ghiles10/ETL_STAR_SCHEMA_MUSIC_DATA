@@ -1,4 +1,5 @@
 def format_datetime(ts):
+    
     """this function converts a timestamp to a datetime object """ 
     import datetime
     return datetime.datetime.fromtimestamp(ts/1000.0)
@@ -25,3 +26,6 @@ time_table = df.select( 'start_time', 'datetime' ,
                         year("datetime").alias('year'),
                         month("datetime").alias('month'),
                         dayofweek("datetime").alias('weekday') )
+
+
+                        
