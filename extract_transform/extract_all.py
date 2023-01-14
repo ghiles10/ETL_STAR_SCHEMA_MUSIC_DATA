@@ -1,5 +1,3 @@
-import sys
-sys.path.append(r'/workspaces/AIRFLOW_MUSIC')
 import os
 from extract_song_artist import extract_song 
 from extact_user_infos_fact_table import extract_user_time_fact_table
@@ -27,7 +25,7 @@ def extract_to_postgres(spark_ses, cur, conn, type_file) :
 
                 conn.commit()                  
             
-def main() : 
+def main_extract_data() : 
     
     """ this function call the extract_to_postgres function"""
     spark = spark_session()
@@ -44,4 +42,4 @@ def main() :
 
     
 if __name__ == "__main__" : 
-    main()
+    main_extract_data()

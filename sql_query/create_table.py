@@ -61,7 +61,7 @@ def create_tables(conn, cur):
         cur.execute(query)  
         conn.commit()
     
-def main():
+def main_create_table():
     
     """ execute create_tables function """
     
@@ -72,5 +72,5 @@ def main():
     conn.close()
 
 if __name__ == "__main__":
-    main()
+    main_create_table()
     
