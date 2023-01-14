@@ -18,7 +18,9 @@ To execute the ETL pipeline, you must have PySpark and PostgreSQL dependencies i
 
 Create a .env file : 
 
+```
 # postgres 
 DB_NAME=database
 DB_USER=user
 DB_PASS=password
+```
