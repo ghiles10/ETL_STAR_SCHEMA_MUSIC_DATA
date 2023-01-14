@@ -16,3 +16,9 @@ Finally, the data is loaded into a PostgreSQL database using a star schema for i
 ## Execution 
 To execute the ETL pipeline, you must have PySpark and PostgreSQL dependencies installed.
 
+Create a .env file : 
+
+# postgres 
+DB_NAME=database
+DB_USER=user
+DB_PASS=password
