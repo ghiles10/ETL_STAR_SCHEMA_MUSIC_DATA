@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'/workspaces/AIRFLOW_MUSIC')
+sys.path.append(r'/.')
 
 from utils.utils import connection_object
 

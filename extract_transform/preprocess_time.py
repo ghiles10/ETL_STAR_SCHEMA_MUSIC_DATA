@@ -12,9 +12,6 @@ def table_time(df) :
         """this function converts a timestamp to a datetime object """ 
         return datetime.datetime.fromtimestamp(ts/1000.0)
 
-    # create timestamp column from original timestamp column
-    # get_timestamp = udf(lambda x: format_datetime(int(x)), NumericType())
-    # df = df.withColumn("start_time", get_timestamp(df.ts))
 
     # create datetime column from original timestamp column
     get_datetime = udf(lambda x: format_datetime(int(x)), DateType())

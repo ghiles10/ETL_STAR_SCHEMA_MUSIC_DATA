@@ -6,9 +6,9 @@ from utils.utils import spark_session, connection_object
 def extract_to_postgres(spark_ses, cur, conn, type_file) : 
     
     """ this function extract data from the song_data and log_data folder and insert them into the database"""
-    path_dir = '/workspaces/AIRFLOW_MUSIC/data/'
+    path_dir = './data/'
     
-    count = 0 
+    count = 0  
     for root, _ , file in os.walk(f"{path_dir}{type_file}"):
         for f in file:
             count += 1
