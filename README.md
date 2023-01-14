@@ -14,4 +14,5 @@ Data is then transformed using PySpark to clean, format, and normalize the data.
 Finally, the data is loaded into a PostgreSQL database using a star schema for improved query performance.
 
 ## Execution 
-To execute the ETL pipeline, you must have PySpark and PostgreSQL dependencies installed. Then run the main script app.py to start the pipeline.
+To execute the ETL pipeline, you must have PySpark and PostgreSQL dependencies installed.
+
