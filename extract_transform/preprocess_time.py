@@ -1,4 +1,4 @@
-from pyspark.sql.types import DateType , TimestampType 
+from pyspark.sql.types import DateType , TimestampType, NumericType	
 from pyspark.sql.functions import udf
 from pyspark.sql.functions import year, month, dayofmonth, hour, weekofyear, dayofweek
 import datetime
@@ -13,15 +13,15 @@ def table_time(df) :
         return datetime.datetime.fromtimestamp(ts/1000.0)
 
     # create timestamp column from original timestamp column
-    get_timestamp = udf(lambda x: format_datetime(int(x)), TimestampType())
-    df = df.withColumn("start_time", get_timestamp(df.ts))
+    # get_timestamp = udf(lambda x: format_datetime(int(x)), NumericType())
+    # df = df.withColumn("start_time", get_timestamp(df.ts))
 
     # create datetime column from original timestamp column
     get_datetime = udf(lambda x: format_datetime(int(x)), DateType())
     df = df.withColumn("datetime", get_datetime(df.ts))
 
     # extract columns to create time table
-    time_table = df.select( 'start_time' , 
+    time_table = df.select( 'ts' , 
                             hour("datetime").alias('hour'),
                             dayofmonth("datetime").alias('day'),
                             weekofyear("datetime").alias('week'),
@@ -29,6 +29,8 @@ def table_time(df) :
                             year("datetime").alias('year'),
                             dayofweek("datetime").alias('weekday') )
 
+    
+    print('-----------time table ok-----------')
     return time_table
 
                         

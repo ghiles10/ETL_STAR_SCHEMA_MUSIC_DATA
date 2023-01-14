@@ -19,5 +19,5 @@ def extract_fact_table( df , cur):
                          songid, artistid, df.select('sessionId').collect()[row][0])
         
         cur.execute(songplay_table_insert, songplay_data)
-        
+        print('-----------fact table ok-----------')
         

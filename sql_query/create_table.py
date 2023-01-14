@@ -1,3 +1,6 @@
+import sys
+sys.path.append(r'/workspaces/AIRFLOW_MUSIC')
+
 from utils.utils import connection_object
 
 def create_tables(conn, cur):
@@ -34,7 +37,7 @@ def create_tables(conn, cur):
 
     time_table_create = ("""
     CREATE TABLE time
-    (start_time bigint PRIMARY KEY, 
+    (start_time BIGINT  PRIMARY KEY, 
     hour int,
     day int,
     week int,
@@ -46,7 +49,7 @@ def create_tables(conn, cur):
     query_songplay_table_create = ("""
     CREATE TABLE songplays
     (songplay_id SERIAL PRIMARY KEY, 
-    start_time bigint REFERENCES time(start_time) ON DELETE RESTRICT, 
+    start_time BIGINT REFERENCES time(start_time) ON DELETE RESTRICT, 
     user_id int REFERENCES users(user_id) ON DELETE RESTRICT, 
     level varchar, 
     song_id varchar REFERENCES songs(song_id) ON DELETE RESTRICT, 

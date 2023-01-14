@@ -7,10 +7,12 @@ def extract_song(spark_session , cur, path) :
     df = spark_session.read.json(path)
     song_data = tuple((df.select(['song_id', 'title', 'artist_id', 'year', 'duration']).collect()[0]))
     cur.execute(song_table_insert, song_data)
-    print('-----------------------------------ok-------------------------------------')
+    
+    print('-----------song table ok-----------')
 
     # insert artist record
     df = spark_session.read.json(path)
     song_data = tuple((df.select(['artist_id', 'artist_name', 'artist_location', 'artist_latitude', 'artist_longitude']).collect()[0]))
     cur.execute(artist_table_insert, song_data)
 
+    print('-----------artist table ok-----------')

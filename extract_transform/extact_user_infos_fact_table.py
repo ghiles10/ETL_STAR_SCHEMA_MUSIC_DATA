@@ -14,15 +14,18 @@ def extract_user_time_fact_table(spark_session , cur, path):
     time_table = table_time(df)
     insert(time_table, cur, time_table_insert)
     
+    print('-----------time SQL table ok-----------')
+    
     # load user table
     user_df = df.select(['userId', 'firstName', 'lastName', 'gender', 'level']) 
-
     # insert user records
     insert(user_df, cur, user_table_insert)     
+    
+    print('-----------user SQL table ok-----------')
 
     # insert songplay records fact table 
     extract_fact_table(df , cur)
-    
+    print('-----------fact SQL table ok-----------')
 
     
     
