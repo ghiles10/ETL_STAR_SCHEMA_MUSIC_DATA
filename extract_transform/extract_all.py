@@ -11,7 +11,7 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
-def extract_to_postgres(spark_ses, cur, conn, type_file) : 
+def extract_to_postgres(spark_ses, cur, conn, type_file, logger = logger) : 
     
     """ this function extract data from the song_data and log_data folder and insert them into the database"""
     path_dir = './data/'
@@ -34,7 +34,7 @@ def extract_to_postgres(spark_ses, cur, conn, type_file) :
 
                 conn.commit()                  
             
-def main_extract_data() : 
+def main_extract_data(logger = logger) : 
     
     """ this function call the extract_to_postgres function"""
     spark = spark_session()
