@@ -1,13 +1,22 @@
 import sys
-sys.path.append(r'/.')
+sys.path.append(r'.')
+import logging
 
 from utils.utils import connection_object
 
 def create_tables(conn, cur):
-    
+       
     """
     Create fact and dim tables in the database 
     """
+    
+    logger = logging.getLogger(__name__)
+    handler = logging.FileHandler('log/create_tables.log', mode = 'w')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(module)s  - %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
+    
     user_table_create = ("""
     CREATE TABLE users
     (user_id int PRIMARY KEY, 
@@ -17,6 +26,8 @@ def create_tables(conn, cur):
     level varchar);
     """)
 
+    logger.info('user SQL table ok')
+
     song_table_create = ("""
     CREATE TABLE songs
     (song_id varchar PRIMARY KEY, 
@@ -25,6 +36,8 @@ def create_tables(conn, cur):
     year int,
     duration float);
     """)
+    
+    logger.info('song SQL table ok')
     
     artist_table_create = ("""
     CREATE TABLE artists

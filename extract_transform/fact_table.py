@@ -1,7 +1,16 @@
 from sql_query.insert_table_query import song_artist_select, songplay_table_insert
+import logging
+
 def extract_fact_table( df , cur):                                      
                                                                    
     """this function extracts the fact table from the json file and returns a dataframe """
+    
+    logger = logging.getLogger(__name__)
+    handler = logging.FileHandler('log/create_tables.log', mode = 'w')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(module)s  - %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
                                                            
     for row in range(int( df.count()) ):               
                                                   
@@ -19,5 +28,5 @@ def extract_fact_table( df , cur):
                          songid, artistid, df.select('sessionId').collect()[row][0])
         
         cur.execute(songplay_table_insert, songplay_data)
-        print('-----------fact table ok-----------')
+        logger.info('facet table extracted')
         

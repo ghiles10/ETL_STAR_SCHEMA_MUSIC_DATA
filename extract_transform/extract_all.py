@@ -2,11 +2,20 @@ import os
 from extract_song_artist import extract_song 
 from extact_user_infos_fact_table import extract_user_time_fact_table
 from utils.utils import spark_session, connection_object
+import logging
+
+logger = logging.getLogger(__name__)
+handler = logging.FileHandler('log/create_tables.log', mode = 'w')
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(module)s  - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)
 
 def extract_to_postgres(spark_ses, cur, conn, type_file) : 
     
     """ this function extract data from the song_data and log_data folder and insert them into the database"""
     path_dir = './data/'
+    
     
     count = 0  
     for root, _ , file in os.walk(f"{path_dir}{type_file}"):
@@ -34,11 +43,11 @@ def main_extract_data() :
     
     print('song data begin')
     extract_to_postgres(spark, cur, conn, 'song_data')
-    print('--------------------------------------------------etract song data ok-----------------------------------------------')
+    logger.info('song data extracted')
 
     print('log data begin') 
     extract_to_postgres(spark, cur, conn, 'log_data')
-    print('--------------------------------------------------etract log data ok-----------------------------------------------')
+    logger.info('log data extracted')
 
     
 if __name__ == "__main__" : 
