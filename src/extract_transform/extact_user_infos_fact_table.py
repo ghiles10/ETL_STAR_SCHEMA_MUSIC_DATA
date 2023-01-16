@@ -7,7 +7,7 @@ import logging
 def extract_user_time_fact_table(spark_session , cur, path):
     
     logger = logging.getLogger(__name__)
-    handler = logging.FileHandler('log/extract_user_info_fact_table.log', mode = 'w')
+    handler = logging.FileHandler('src/log/extract_user_info_fact_table.log', mode = 'w')
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(module)s  - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)

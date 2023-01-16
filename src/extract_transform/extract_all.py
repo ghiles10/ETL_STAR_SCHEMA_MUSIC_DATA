@@ -5,7 +5,7 @@ from utils.utils import spark_session, connection_object
 import logging
 
 logger = logging.getLogger(__name__)
-handler = logging.FileHandler('log/create_tables.log', mode = 'w')
+handler = logging.FileHandler('src/log/create_tables.log', mode = 'w')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(module)s  - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
