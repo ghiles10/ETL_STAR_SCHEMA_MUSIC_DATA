@@ -14,7 +14,7 @@ logger.setLevel(logging.INFO)
 def extract_to_postgres(spark_ses, cur, conn, type_file, logger = logger) : 
     
     """ this function extract data from the song_data and log_data folder and insert them into the database"""
-    path_dir = './data/'
+    path_dir = 'src/data/'
     
     
     count = 0  
@@ -49,7 +49,7 @@ def main_extract_data(logger = logger) :
     extract_to_postgres(spark, cur, conn, 'log_data')
     logger.info('log data extracted')
 
-    conn.close()
+    # conn.close()
     
 if __name__ == "__main__" : 
     main_extract_data()

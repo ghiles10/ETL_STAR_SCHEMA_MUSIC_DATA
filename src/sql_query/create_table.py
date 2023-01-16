@@ -18,7 +18,7 @@ def create_tables(conn, cur):
     logger.setLevel(logging.INFO)
     
     user_table_create = ("""
-    CREATE TABLE users
+    CREATE TABLE IF NOT EXISTS users
     (user_id int PRIMARY KEY, 
     first_name varchar,
     last_name varchar,
@@ -29,7 +29,7 @@ def create_tables(conn, cur):
     logger.info('user SQL table ok')
 
     song_table_create = ("""
-    CREATE TABLE songs
+    CREATE TABLE IF NOT EXISTS songs
     (song_id varchar PRIMARY KEY, 
     title varchar,
     artist_id varchar,
@@ -40,7 +40,7 @@ def create_tables(conn, cur):
     logger.info('song SQL table ok')
     
     artist_table_create = ("""
-    CREATE TABLE artists
+    CREATE TABLE IF NOT EXISTS artists
     (artist_id varchar PRIMARY KEY, 
     name varchar,
     location varchar,
@@ -49,7 +49,7 @@ def create_tables(conn, cur):
     """)
 
     time_table_create = ("""
-    CREATE TABLE time
+    CREATE TABLE IF NOT EXISTS time
     (start_time BIGINT  PRIMARY KEY, 
     hour int,
     day int,
@@ -60,7 +60,7 @@ def create_tables(conn, cur):
     """)
     
     query_songplay_table_create = ("""
-    CREATE TABLE songplays
+    CREATE TABLE IF NOT EXISTS songplays
     (songplay_id SERIAL PRIMARY KEY, 
     start_time BIGINT REFERENCES time(start_time) ON DELETE RESTRICT, 
     user_id int REFERENCES users(user_id) ON DELETE RESTRICT, 
