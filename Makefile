@@ -12,6 +12,11 @@ install: $(VENV_NAME)
 run: install
 	. $(VENV_NAME)/bin/activate && python $(APP)
 
+quality-checks: run
+	pip install flake8 mypy
+	flake8 src --config=.flake8 --ignore=E203
+	mypy src
+
 test: run
 	pip install pytest==7.0.1 
 	pytest
@@ -19,4 +24,4 @@ test: run
 clean:
 	rm -rf $(VENV_NAME)
 
-all: install run test clean 
+all: install run quality-checks test clean 
