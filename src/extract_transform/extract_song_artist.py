@@ -6,7 +6,7 @@ def extract_song(spark_session , cur, path) :
     """this function extract the song data from the song_data folder and insert the data into the song and artist table """
     
     logger = logging.getLogger(__name__)
-    handler = logging.FileHandler('log/create_tables.log', mode = 'w')
+    handler = logging.FileHandler('src/log/create_tables.log', mode = 'w')
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(funcName)s - %(module)s  - %(message)s')
     handler.setFormatter(formatter)
     logger.addHandler(handler)
