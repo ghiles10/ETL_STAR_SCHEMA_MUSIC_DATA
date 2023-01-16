@@ -34,7 +34,7 @@ def test_create_table(con_db, table_name):
 @pytest.mark.parametrize('table_name', ['songs', 'artists', 'users', 'time', 'songplays'])
 def test_insert_table(con_db, table_name):
     
-    """    Vérifier si la table contient des données """
+    """  Vérifier si la table contient des données """
     
     cur = con_db.cursor()
     cur.execute(f"SELECT * FROM {table_name} limit 10")
