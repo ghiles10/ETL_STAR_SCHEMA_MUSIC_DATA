@@ -49,6 +49,7 @@ def main_extract_data(logger = logger) :
     extract_to_postgres(spark, cur, conn, 'log_data')
     logger.info('log data extracted')
 
+    conn.close()
     
 if __name__ == "__main__" : 
     main_extract_data()

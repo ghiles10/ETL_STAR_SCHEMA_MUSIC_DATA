@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-load_dotenv(r'./.env')
+load_dotenv(r'/workspaces/AIRFLOW_MUSIC/src/.env')
 
 DB_DETAILS = {
             'db_name': os.getenv("DB_NAME"),
