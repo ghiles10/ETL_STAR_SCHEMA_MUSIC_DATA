@@ -24,3 +24,8 @@ DB_NAME=database
 DB_USER=user
 DB_PASS=password
 ```
+
+Enter this command : 
+```
+Make run 
+```
