@@ -1,6 +1,6 @@
 # Music Data ETL
 
-This repository contains an ETL pipeline for retrieving, transforming, and loading music data from log and files. The data is sourced from a music application. 
+This repository contains an ETL pipeline for retrieving, transforming, and loading music data into a star schema from log and files. The data is sourced from a music application. 
 
 The main objective of this database is to provide the music app with a reliable and consistent source of data that can be used to answer various business questions related to the music preferences and habits of its users. By leveraging the data stored in logs and files, this database allows to gain insights into the types of songs and artists that are popular among its users 
 
